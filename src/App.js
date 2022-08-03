@@ -99,6 +99,16 @@ function App() {
     setEditContactId(null);
   };
 
+  const handleDeleteClick = (contactId) => {
+    const newContacts = [...contacts];
+
+    const index = contacts.findIndex((contact) => contact.id === contactId);
+
+    newContacts.splice(index, 1);
+
+    setContacts(newContacts);
+  };
+
   return (
     <div className="app-container">
       <form onSubmit={handleEditFormSubmit}>
@@ -127,6 +137,7 @@ function App() {
                     index={index}
                     key={index}
                     handleEditClick={handleEditClick}
+                    handleDeleteClick ={handleDeleteClick}
                   />
                 )}
               </Fragment>
